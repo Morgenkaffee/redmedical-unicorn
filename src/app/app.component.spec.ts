@@ -1,11 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {MockComponent} from "ng-mocks";
+import {DashboardComponent} from "./visualization/dashboard/dashboard.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        MockComponent(DashboardComponent)
       ],
     }).compileComponents();
   });
@@ -16,16 +19,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'redmedical-unicorn'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('redmedical-unicorn');
-  });
 
-  it('should render title', () => {
+  it('should create three dashboards', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('redmedical-unicorn app is running!');
+    expect(compiled.querySelectorAll('app-dashboard')?.length).toEqual(3);
   });
 });
