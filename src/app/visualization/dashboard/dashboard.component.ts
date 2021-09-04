@@ -8,7 +8,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   @Input()
-  content: Array<DashboardItem> = [];
+  dashboardItems: Array<DashboardItem> = [];
 
   constructor() { }
 

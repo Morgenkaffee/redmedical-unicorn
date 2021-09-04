@@ -1,1 +1,3 @@
-<mat-card>a card</mat-card>
+<mat-card>
+  <div class="dashboard__entry" *ngFor="let dashboardEntry of dashboardItems">{{dashboardEntry.content}}</div>
+</mat-card>
