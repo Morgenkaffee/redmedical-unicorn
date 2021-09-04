@@ -1,4 +1,11 @@
 $flexboxgrid-breakpoints:
-  xs 420px
+  xs 420px,
   md 768px,
-  lg 1024px,
+  lg 1024px;
+
+$gutter-width: 24px;
+$outer-margin: 24px;
+
+.row {
+  margin: 0 !important;
+}
