@@ -1,3 +1,6 @@
 <mat-card>
-  <div class="dashboard__entry" *ngFor="let dashboardEntry of dashboardItems">{{dashboardEntry.content}}</div>
+  <div class="dashboard__entry" *ngFor="let dashboardEntry of dashboardItems">
+    <ng-template #defaultDashboardEntryTemplate let-dashboardEntry>{{dashboardEntry.content}}</ng-template>
+    <ng-container [ngTemplateOutlet]="dashboardEntryRef || defaultDashboardEntryTemplate" [ngTemplateOutletContext]="{ $implicit: dashboardEntry}"></ng-container>
+  </div>
 </mat-card>

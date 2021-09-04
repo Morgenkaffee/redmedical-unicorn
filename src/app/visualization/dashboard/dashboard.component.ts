@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ContentChild, Input, OnInit, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +9,8 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 export class DashboardComponent implements OnInit {
   @Input()
   dashboardItems: Array<DashboardItem> = [];
+  @ContentChild('dashboardEntryTemplate')
+  dashboardEntryRef!: TemplateRef<any>;
 
   constructor() { }
 
