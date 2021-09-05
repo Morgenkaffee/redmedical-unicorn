@@ -1,23 +1,19 @@
 <div class="row middle-xs application">
-  <app-dashboard class="col-xs-12 col-md-6 col-lg-4" [dashboardEntries]="(typeScriptSearchResults$ | async)">
+  <app-dashboard class="col-xs-12 col-md-6 col-xl-4" [dashboardEntries]="(typeScriptSearchResults$ | async)">
     <ng-template #dashboardEntryTemplate let-dashboardEntry>
-      <div>
-        {{dashboardEntry?.answerCount}} | {{dashboardEntry?.title}}
-      </div>
+      <app-github-entry [entryData]="dashboardEntry"></app-github-entry>
     </ng-template>
   </app-dashboard>
-  <app-dashboard class="col-xs-12 col-md-6 col-lg-4" [dashboardEntries]="(angularSearchResults$ | async)">
+  <app-dashboard class="col-xs-12 col-md-6 col-xl-4" [dashboardEntries]="(angularSearchResults$ | async)">
     <ng-template #dashboardEntryTemplate let-dashboardEntry>
-      <div>
-        {{dashboardEntry?.title}}
-      </div>
+      <app-github-entry [entryData]="dashboardEntry"></app-github-entry>
     </ng-template>
   </app-dashboard>
-  <app-dashboard class="col-xs-12 col-md-6 col-lg-4" [dashboardEntries]="(weatherSearchResult$ | async)">
+  <app-dashboard class="col-xs-12 col-md-6 col-xl-4" [dashboardEntries]="(weatherSearchResult$ | async)">
     <ng-template #dashboardEntryTemplate let-dashboardEntry>
-      <div *ngIf="dashboardEntry.title; else elseBlock">
-        {{dashboardEntry?.title}}
-      </div>
+      <ng-container *ngIf="dashboardEntry.title; else elseBlock">
+        <app-github-entry [entryData]="dashboardEntry"></app-github-entry>
+      </ng-container>
       <ng-template #elseBlock>
         {{dashboardEntry.temperatureEvening}}
       </ng-template>

@@ -1,0 +1,27 @@
+.entry {
+  background: lightcoral;
+  padding: 8px;
+  cursor: pointer;
+  &:hover {
+    outline: darkgrey  inset 1px;
+  }
+  &__date {
+    font-size: 0.75rem;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  &__answer-count {
+    font-size: 2rem;
+    text-align: center;
+  }
+  &__answer-description {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  &--answered {
+    background: lightgreen;
+  }
+
+}

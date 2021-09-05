@@ -8,7 +8,7 @@ import {ChangeDetectionStrategy, Component, ContentChild, Input, TemplateRef} fr
 })
 export class DashboardComponent {
   @Input()
-  dashboardEntries: Array<DashboardEntry> = [];
+  dashboardEntries: Array<DefaultDashboardEntry> = [];
   @ContentChild('dashboardEntryTemplate')
   dashboardEntryTemplateRef!: TemplateRef<any>;
 
@@ -17,6 +17,6 @@ export class DashboardComponent {
 
 }
 
-export interface DashboardEntry {
+export interface DefaultDashboardEntry {
   readonly content: string;
 }

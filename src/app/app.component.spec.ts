@@ -1,9 +1,9 @@
-import {TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {MockComponent} from "ng-mocks";
 import {DashboardComponent} from "./visualization/dashboard/dashboard.component";
 import {anyNumber, anyString, instance, mock, reset, when} from "ts-mockito";
-import {GithubSearchService, SearchItems} from "./services/github-search.service";
+import {GithubSearchService, GithubSearchItem} from "./services/github-search.service";
 import {of, Subject} from "rxjs";
 import {LocalDataService, WeatherData} from "./services/local-data.service";
 
@@ -11,6 +11,8 @@ import {LocalDataService, WeatherData} from "./services/local-data.service";
 describe('AppComponent', () => {
   let mockGithubSeachService = mock(GithubSearchService);
   let mockLocalDataService = mock(LocalDataService);
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(async () => {
     when(mockGithubSeachService.search(anyString())).thenReturn(of());
@@ -25,25 +27,28 @@ describe('AppComponent', () => {
         {provide: GithubSearchService, useValue: instance(mockGithubSeachService)},
         {provide: LocalDataService, useValue: instance(mockLocalDataService)}]
     }).compileComponents();
+   });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+
+    expect(component).toBeTruthy();
   });
 
 
   it('should create three dashboards', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelectorAll('app-dashboard')?.length).toEqual(3);
   });
   it('should merge the search results in an alternating order', (done) => {
     reset(mockGithubSeachService);
     reset(mockLocalDataService);
-    const mockGithubSearchResultSubject = new Subject<SearchItems[]>();
+    const mockGithubSearchResultSubject = new Subject<GithubSearchItem[]>();
     const mockLocalDataSearchResultSubject = new Subject<WeatherData[]>();
     when(mockGithubSeachService.search(anyString(), anyNumber())).thenReturn(mockGithubSearchResultSubject);
     when(mockGithubSeachService.search(anyString())).thenReturn(mockGithubSearchResultSubject);

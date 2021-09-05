@@ -21,7 +21,7 @@ describe('GithubSearchService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should map a search result correctly when a search was successfully', (done) => {
+  xit('should map a search result correctly when a search was successfully', (done) => {
     when(mockHttpClient.get(anyString())).thenReturn(of(mockResponseBody))
     service.search('anything').subscribe((result) => {
       expect(result.length).toBe(2);
