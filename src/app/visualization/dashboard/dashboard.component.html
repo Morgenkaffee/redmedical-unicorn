@@ -4,6 +4,7 @@
     <ng-container [ngTemplateOutlet]="dashboardEntryTemplateRef || defaultDashboardEntryTemplate"
                   [ngTemplateOutletContext]="{ $implicit: dashboardEntry}"></ng-container>
   </div>
+  <div *ngIf="!dashboardEntries || dashboardEntries.length === 0" class="dashboard__error">Keine Daten zur Anzeige gefunden</div>
 </mat-card>
 
 
