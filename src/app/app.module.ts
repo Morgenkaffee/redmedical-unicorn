@@ -6,7 +6,7 @@ import { DashboardComponent } from './visualization/dashboard/dashboard.componen
 import {MatCardModule} from "@angular/material/card";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
-import { GithubEntryComponent } from './visualization/github-entry/github-entry.component';
+import { StackoverflowEntryComponent } from './visualization/stackoverflow-entry/stackoverflow-entry.component';
 import { WeatherEntryComponent } from './visualization/weather-entry/weather-entry.component';
 import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faStackOverflow} from "@fortawesome/free-brands-svg-icons";
@@ -19,7 +19,7 @@ const icons = [faStackOverflow, faTemperatureHigh, faTemperatureLow, faWind, faL
   declarations: [
     AppComponent,
     DashboardComponent,
-    GithubEntryComponent,
+    StackoverflowEntryComponent,
     WeatherEntryComponent,
     UnescapeHtmlPipe,
   ],

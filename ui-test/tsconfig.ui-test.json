@@ -1,0 +1,19 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "declaration": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node"],
+    "lib": ["es2018", "dom"]
+  },
+  "files": ["../ui-test/**/*.ts"]
+}
+
+

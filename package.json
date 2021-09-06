@@ -1,12 +1,15 @@
 {
   "name": "redmedical-unicorn",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": "Lars Bayer",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "testcafe": "testcafe",
+    "testcafe:standalone": "testcafe --app \"npm run start\" --app-init-delay 120000"
   },
   "private": true,
   "dependencies": {
@@ -48,6 +51,8 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "testcafe": "^1.15.3",
+    "testcafe-reporter-html": "^1.4.6",
     "typescript": "~4.3.5"
   }
 }

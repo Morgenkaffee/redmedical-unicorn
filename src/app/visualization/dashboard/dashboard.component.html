@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card cafe="dashboard">
   <div class="dashboard__entry" *ngFor="let dashboardEntry of dashboardEntries">
     <ng-template #defaultDashboardEntryTemplate let-dashboardEntry>{{dashboardEntry.content}}</ng-template>
     <ng-container [ngTemplateOutlet]="dashboardEntryTemplateRef || defaultDashboardEntryTemplate"

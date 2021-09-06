@@ -1,12 +1,12 @@
 import {TestBed} from '@angular/core/testing';
 
-import {GithubSearchService} from './github-search.service';
+import {StackoverflowSearchService} from './stackoverflow-search.service';
 import {anyString, instance, mock, when} from "ts-mockito";
 import {HttpClient} from "@angular/common/http";
 import {of} from "rxjs";
 
-describe('GithubSearchService', () => {
-  let service: GithubSearchService;
+describe('StackoverflowSearchService', () => {
+  let service: StackoverflowSearchService;
 
   let mockHttpClient = mock(HttpClient);
 
@@ -14,14 +14,14 @@ describe('GithubSearchService', () => {
     TestBed.configureTestingModule({
       providers: [{provide: HttpClient, useValue: instance(mockHttpClient)}]
     });
-    service = TestBed.inject(GithubSearchService);
+    service = TestBed.inject(StackoverflowSearchService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  xit('should map a search result correctly when a search was successfully', (done) => {
+  it('should map a search result correctly when a search was successfully', (done) => {
     when(mockHttpClient.get(anyString())).thenReturn(of(mockResponseBody))
     service.search('anything').subscribe((result) => {
       expect(result.length).toBe(2);

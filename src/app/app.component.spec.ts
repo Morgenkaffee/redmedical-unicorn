@@ -3,28 +3,28 @@ import {AppComponent} from './app.component';
 import {MockComponent} from "ng-mocks";
 import {DashboardComponent} from "./visualization/dashboard/dashboard.component";
 import {anyNumber, anyString, instance, mock, reset, when} from "ts-mockito";
-import {GithubSearchService, GithubSearchItem} from "./services/github-search.service";
+import {StackoverflowSearchService, StackoverflowSearchItem} from "./services/stackoverflow-search.service";
 import {of, Subject} from "rxjs";
 import {LocalDataService, WeatherData} from "./services/local-data.service";
 
 
 describe('AppComponent', () => {
-  let mockGithubSeachService = mock(GithubSearchService);
+  let mockStackoverflowSeachService = mock(StackoverflowSearchService);
   let mockLocalDataService = mock(LocalDataService);
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(async () => {
-    when(mockGithubSeachService.search(anyString())).thenReturn(of());
+    when(mockStackoverflowSeachService.search(anyString())).thenReturn(of());
     when(mockLocalDataService.getLocalWeatherData()).thenReturn(of());
-    when(mockGithubSeachService.search(anyString(), anyNumber())).thenReturn(of());
+    when(mockStackoverflowSeachService.search(anyString(), anyNumber())).thenReturn(of());
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent,
         MockComponent(DashboardComponent)
       ],
       providers: [
-        {provide: GithubSearchService, useValue: instance(mockGithubSeachService)},
+        {provide: StackoverflowSearchService, useValue: instance(mockStackoverflowSeachService)},
         {provide: LocalDataService, useValue: instance(mockLocalDataService)}]
     }).compileComponents();
    });
@@ -46,12 +46,12 @@ describe('AppComponent', () => {
     expect(compiled.querySelectorAll('app-dashboard')?.length).toEqual(3);
   });
   it('should merge the search results in an alternating order', (done) => {
-    reset(mockGithubSeachService);
+    reset(mockStackoverflowSeachService);
     reset(mockLocalDataService);
-    const mockGithubSearchResultSubject = new Subject<GithubSearchItem[]>();
+    const mockStackoverflowSearchResultSubject = new Subject<StackoverflowSearchItem[]>();
     const mockLocalDataSearchResultSubject = new Subject<WeatherData[]>();
-    when(mockGithubSeachService.search(anyString(), anyNumber())).thenReturn(mockGithubSearchResultSubject);
-    when(mockGithubSeachService.search(anyString())).thenReturn(mockGithubSearchResultSubject);
+    when(mockStackoverflowSeachService.search(anyString(), anyNumber())).thenReturn(mockStackoverflowSearchResultSubject);
+    when(mockStackoverflowSeachService.search(anyString())).thenReturn(mockStackoverflowSearchResultSubject);
     when(mockLocalDataService.getLocalWeatherData()).thenReturn(mockLocalDataSearchResultSubject);
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
@@ -64,7 +64,7 @@ describe('AppComponent', () => {
       expect(result[3].rain).toBe(2);
       done();
     });
-    mockGithubSearchResultSubject.next([{title: 'a'} as any, {title: 'b'} as any]);
+    mockStackoverflowSearchResultSubject.next([{title: 'a'} as any, {title: 'b'} as any]);
     mockLocalDataSearchResultSubject.next([{rain: 1} as any, {rain: 2} as any]);
   });
 });

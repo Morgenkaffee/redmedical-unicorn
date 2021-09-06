@@ -1,18 +1,18 @@
 <div class="row middle-xs application">
   <app-dashboard class="col-xs-12 col-md-6 col-xl-4" [dashboardEntries]="(typeScriptSearchResults$ | async)">
     <ng-template #dashboardEntryTemplate let-dashboardEntry>
-      <app-github-entry [entryData]="dashboardEntry"></app-github-entry>
+      <app-stackoverflow-entry [entryData]="dashboardEntry"></app-stackoverflow-entry>
     </ng-template>
   </app-dashboard>
   <app-dashboard class="col-xs-12 col-md-6 col-xl-4" [dashboardEntries]="(angularSearchResults$ | async)">
     <ng-template #dashboardEntryTemplate let-dashboardEntry>
-      <app-github-entry [entryData]="dashboardEntry"></app-github-entry>
+      <app-stackoverflow-entry [entryData]="dashboardEntry"></app-stackoverflow-entry>
     </ng-template>
   </app-dashboard>
   <app-dashboard class="col-xs-12 col-md-6 col-xl-4" [dashboardEntries]="(weatherSearchResult$ | async)">
     <ng-template #dashboardEntryTemplate let-dashboardEntry>
       <ng-container *ngIf="dashboardEntry.title; else elseBlock">
-        <app-github-entry [entryData]="dashboardEntry"></app-github-entry>
+        <app-stackoverflow-entry [entryData]="dashboardEntry"></app-stackoverflow-entry>
       </ng-container>
       <ng-template #elseBlock>
         <app-weather-entry [entryData]="dashboardEntry"></app-weather-entry>

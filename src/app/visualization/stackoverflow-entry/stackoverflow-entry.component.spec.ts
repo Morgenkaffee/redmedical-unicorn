@@ -1,27 +1,27 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {GithubEntryComponent} from './github-entry.component';
+import {StackoverflowEntryComponent} from './stackoverflow-entry.component';
 import {instance, mock, verify, when} from "ts-mockito";
 import {MockComponent, MockPipe} from "ng-mocks";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {UnescapeHtmlPipe} from "../../pipes/unescape-html.pipe";
 
-describe('GithubEntryComponent', () => {
-  let component: GithubEntryComponent;
-  let fixture: ComponentFixture<GithubEntryComponent>;
+describe('StackoverflowEntryComponent', () => {
+  let component: StackoverflowEntryComponent;
+  let fixture: ComponentFixture<StackoverflowEntryComponent>;
   let compiled: HTMLElement;
   let mockWindow = mock<Window>();
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GithubEntryComponent, MockComponent(FaIconComponent), MockPipe(UnescapeHtmlPipe) ],
+      declarations: [ StackoverflowEntryComponent, MockComponent(FaIconComponent), MockPipe(UnescapeHtmlPipe) ],
       providers: [{provide: Window, useValue: instance(mockWindow)}]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GithubEntryComponent);
+    fixture = TestBed.createComponent(StackoverflowEntryComponent);
     component = fixture.componentInstance;
   });
 

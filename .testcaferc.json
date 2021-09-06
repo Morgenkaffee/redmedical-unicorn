@@ -1,0 +1,26 @@
+{
+  "browsers": ["chrome"],
+  "src": "ui-test/**/*.ui-test.ts",
+  "compilerOptions": {
+    "typescript": {
+      "configPath": "ui-test/tsconfig.ui-test.json"
+    }
+  },
+  "reporter": {
+    "name": "html",
+    "output": "reports/report.html"
+  },
+  "screenshots": {
+    "path": "reports/screenshots/",
+    "takeOnFails": true,
+    "pathPattern": "${DATE}_${TIME}/test-${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.png",
+    "fullPage": true
+  },
+  "quarantineMode": false,
+  "debugMode": false,
+  "debugOnFail": false,
+  "concurrency": 1,
+  "stopOnFirstFail": false,
+  "disablePageCaching": true,
+  "color": true
+}
