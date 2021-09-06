@@ -15,7 +15,7 @@
         <app-github-entry [entryData]="dashboardEntry"></app-github-entry>
       </ng-container>
       <ng-template #elseBlock>
-        {{dashboardEntry.temperatureEvening}}
+        <app-weather-entry [entryData]="dashboardEntry"></app-weather-entry>
       </ng-template>
     </ng-template>
   </app-dashboard>

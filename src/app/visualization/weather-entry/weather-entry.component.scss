@@ -1,0 +1,14 @@
+.entry {
+  &__wind-direction {
+    display: inline-block;
+  }
+  &__date {
+    font-size: 0.75rem;
+  }
+  &__data {
+    text-align: center;
+    &__text {
+      font-size: 0.9rem;
+    }
+  }
+}

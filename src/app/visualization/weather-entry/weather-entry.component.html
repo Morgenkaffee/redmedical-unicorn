@@ -1,1 +1,17 @@
-<p>weather-entry works!</p>
+<div class="row middle-xs entry" *ngIf="entryData">
+  <div class="col-xs-12 entry__date">{{entryData.date | date:'dd.MM.YYYY'}}</div>
+  <div class="col-xs-4 entry__data">
+    <fa-icon [icon]="getTemperatureIcon()" [size]="'2x'"></fa-icon>
+    <div class="entry__data__text">{{entryData.temperature}}°C</div>
+  </div>
+  <div class="col-xs-4 entry__data">
+    <fa-icon [icon]="'wind'" [size]="'2x'"></fa-icon>
+    <div class="entry__data__text">{{entryData.windForce}}km/H</div>
+  </div>
+  <div class="col-xs-4 entry__data">
+    <div [ngStyle]="{'transform': 'rotate(' + entryData.windDirection + 'deg)'}" class="entry__wind-direction">
+      <fa-icon [icon]="'long-arrow-alt-up'" [size]="'2x'"></fa-icon>
+    </div>
+    <div class="entry__data__text">{{entryData.windDirection}}°</div>
+  </div>
+</div>

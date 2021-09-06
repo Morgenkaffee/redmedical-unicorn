@@ -19,9 +19,9 @@ export class LocalDataService {
         return localWeatherDataResponse.map((weatherData: WetterDaten) => {
           return {
             date: new Date(weatherData.Datum),
-            rain: weatherData.Regen,
-            temperatureEvening: weatherData["Temp. A."],
-            temperatureThreeAM: weatherData["Temp. 3"]
+            temperature: weatherData["Temp. A."],
+            windDirection: weatherData.Richtung,
+            windForce: weatherData.Wind
           };
         });
       }),
@@ -41,10 +41,10 @@ export class LocalDataService {
 }
 
 export interface WeatherData {
-  temperatureEvening: number;
-  temperatureThreeAM: number;
+  temperature: number;
+  windDirection: number;
+  windForce: number
   date: Date;
-  rain: number;
 }
 
 interface WetterDaten {

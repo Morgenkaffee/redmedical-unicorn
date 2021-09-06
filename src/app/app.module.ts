@@ -10,13 +10,16 @@ import { GithubEntryComponent } from './visualization/github-entry/github-entry.
 import { WeatherEntryComponent } from './visualization/weather-entry/weather-entry.component';
 import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faStackOverflow} from "@fortawesome/free-brands-svg-icons";
+import {faLongArrowAltUp, faTemperatureHigh, faTemperatureLow, faWind} from "@fortawesome/free-solid-svg-icons";
+
+const icons = [faStackOverflow, faTemperatureHigh, faTemperatureLow, faWind, faLongArrowAltUp];
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     GithubEntryComponent,
-    WeatherEntryComponent
+    WeatherEntryComponent,
   ],
     imports: [
         BrowserModule,
@@ -30,6 +33,6 @@ import {faStackOverflow} from "@fortawesome/free-brands-svg-icons";
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(faStackOverflow);
+    icons.forEach(icon => library.addIcons(icon));
   }
 }

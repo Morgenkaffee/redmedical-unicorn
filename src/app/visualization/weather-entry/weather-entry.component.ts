@@ -1,4 +1,7 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {WeatherData} from "../../services/local-data.service";
+import {faTemperatureHigh, faTemperatureLow} from "@fortawesome/free-solid-svg-icons";
+import {IconName} from "@fortawesome/free-brands-svg-icons";
 
 @Component({
   selector: 'app-weather-entry',
@@ -6,11 +9,21 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
   styleUrls: ['./weather-entry.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WeatherEntryComponent implements OnInit {
+export class WeatherEntryComponent {
 
-  constructor() { }
+  private static readonly MINIMUM_HOT_TEMPERATURE = 20;
 
-  ngOnInit(): void {
+  @Input()
+  entryData!: WeatherData;
+
+  constructor() {
+  }
+
+  getTemperatureIcon(): IconName {
+    if (this.entryData.temperature >= WeatherEntryComponent.MINIMUM_HOT_TEMPERATURE) {
+      return faTemperatureHigh.iconName;
+    }
+    return faTemperatureLow.iconName;
   }
 
 }

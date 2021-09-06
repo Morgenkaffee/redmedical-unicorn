@@ -24,16 +24,16 @@ describe('LocalDataService', () => {
     when(mockHttpClient.get(anyString())).thenReturn(of(mockWeatherData));
     service.getLocalWeatherData().subscribe((result: WeatherData[]) => {
       expect(result.length).toBe(2);
-      const resultOne = result[0].rain === 0 ? result[0] : result[1];
-      const resultTwo = result[0].rain === 0 ? result[1] : result[0];
+      const resultOne = result[0].windDirection === 95 ? result[0] : result[1];
+      const resultTwo = result[0].windDirection === 95 ? result[1] : result[0];
       expect(resultOne.date).toEqual(new Date('01.01.2016'));
-      expect(resultOne.rain).toBe(0);
-      expect(resultOne.temperatureThreeAM).toBe(-100.9);
-      expect(resultOne.temperatureEvening).toBe(13.37);
+      expect(resultOne.windForce).toBe(5.2);
+      expect(resultOne.windDirection).toBe(95);
+      expect(resultOne.temperature).toBe(13.37);
       expect(resultTwo.date).toEqual(new Date('01.12.2016'));
-      expect(resultTwo.rain).toBe(5200);
-      expect(resultTwo.temperatureEvening).toBe(1.6);
-      expect(resultTwo.temperatureThreeAM).toBe(-38.8);
+      expect(resultTwo.windForce).toBe(4.1);
+      expect(resultTwo.temperature).toBe(1.6);
+      expect(resultTwo.windDirection).toBe(150);
       done()
     })
   });
