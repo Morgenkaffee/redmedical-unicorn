@@ -27,3 +27,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 To run the UI-Tests you can either run them with `npm run testcafe`, make sure the application IS running
 You can also run the UI-Tests without having the application started, this can be done with `npm run testcafe:standalone`, make sure the application is not running because it blocks the port.
 This is very cool for a pipeline ;)
+
+## Further improvements
+Better Error Handling, currently when the user gets no result back from the external resources no data is displayed, also there is a dependency to stackoverflow when displaying the local weather data
+The Entry components could have been also refactored, but I wanted to display that the content of the dashboard doesn't matter and the dashboard can be reused everywhere, where the same logic is used.
+The app has no accessibility, this should be improved if it is really used
+A translation file and service/pipe could be introduced to centralize the text. 
