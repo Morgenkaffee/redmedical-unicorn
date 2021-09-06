@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import * as moment from "moment";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class LocalDataService {
       map((localWeatherDataResponse: WetterDaten[]) => {
         return localWeatherDataResponse.map((weatherData: WetterDaten) => {
           return {
-            date: new Date(weatherData.Datum),
+            date: moment(weatherData.Datum, 'DD.MM.YYYY').toDate(),
             temperature: weatherData["Temp. A."],
             windDirection: weatherData.Richtung,
             windForce: weatherData.Wind

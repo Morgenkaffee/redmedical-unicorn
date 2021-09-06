@@ -2,8 +2,9 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {GithubEntryComponent} from './github-entry.component';
 import {instance, mock, verify, when} from "ts-mockito";
-import {MockComponent} from "ng-mocks";
+import {MockComponent, MockPipe} from "ng-mocks";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {UnescapeHtmlPipe} from "../../pipes/unescape-html.pipe";
 
 describe('GithubEntryComponent', () => {
   let component: GithubEntryComponent;
@@ -13,7 +14,7 @@ describe('GithubEntryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GithubEntryComponent, MockComponent(FaIconComponent) ],
+      declarations: [ GithubEntryComponent, MockComponent(FaIconComponent), MockPipe(UnescapeHtmlPipe) ],
       providers: [{provide: Window, useValue: instance(mockWindow)}]
     })
     .compileComponents();

@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 import {map, tap} from "rxjs/operators";
+import * as moment from "moment";
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +32,7 @@ export class GithubSearchService {
 
   private mapSearchResultItems(): (value: GithubSearchResultItem, index: number, array: GithubSearchResultItem[]) => GithubSearchItem {
     return (item: GithubSearchResultItem) => {
-      return {title: item.title, creationDate: new Date(item.creation_date * 1000), isAnswered: item.is_answered, answerCount: item.answer_count, link: item.link} // little hack to fast create ms out of seconds
+      return {title: item.title, creationDate: moment(item.creation_date, 'X').toDate(), isAnswered: item.is_answered, answerCount: item.answer_count, link: item.link}
     };
   }
 

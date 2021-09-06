@@ -30,7 +30,7 @@ describe('LocalDataService', () => {
       expect(resultOne.windForce).toBe(5.2);
       expect(resultOne.windDirection).toBe(95);
       expect(resultOne.temperature).toBe(13.37);
-      expect(resultTwo.date).toEqual(new Date('01.12.2016'));
+      expect(resultTwo.date).toEqual(new Date('12.01.2016'));
       expect(resultTwo.windForce).toBe(4.1);
       expect(resultTwo.temperature).toBe(1.6);
       expect(resultTwo.windDirection).toBe(150);

@@ -11,6 +11,7 @@ import { WeatherEntryComponent } from './visualization/weather-entry/weather-ent
 import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faStackOverflow} from "@fortawesome/free-brands-svg-icons";
 import {faLongArrowAltUp, faTemperatureHigh, faTemperatureLow, faWind} from "@fortawesome/free-solid-svg-icons";
+import { UnescapeHtmlPipe } from './pipes/unescape-html.pipe';
 
 const icons = [faStackOverflow, faTemperatureHigh, faTemperatureLow, faWind, faLongArrowAltUp];
 
@@ -20,6 +21,7 @@ const icons = [faStackOverflow, faTemperatureHigh, faTemperatureLow, faWind, faL
     DashboardComponent,
     GithubEntryComponent,
     WeatherEntryComponent,
+    UnescapeHtmlPipe,
   ],
     imports: [
         BrowserModule,
