@@ -27,6 +27,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 To run the UI-Tests you can either run them with `npm run testcafe`, make sure the application IS running
 You can also run the UI-Tests without having the application started, this can be done with `npm run testcafe:standalone`, make sure the application is not running because it blocks the port.
 This is very cool for a pipeline ;)
+You can find the test results in the report folder!
 
 ## Further improvements
 Better Error Handling, currently when the user gets no result back from the external resources no data is displayed, also there is a dependency to stackoverflow when displaying the local weather data
